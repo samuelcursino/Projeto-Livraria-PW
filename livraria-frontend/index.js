@@ -76,10 +76,20 @@ app.post('/editarCategoria', (req, res)=>{
         res.send('dado alterado');
     });
 
-    // console.log(req.body);
-
 })
 
+app.get('/excluirCategoria/:cod_categoria', (req, res)=>{
+
+    let {cod_categoria} = req.params;
+
+    const urlExcluirCategoria = `http://localhost:3000/excluirCategoria/${cod_categoria}`
+
+    axios.delete(urlExcluirCategoria)
+    .then((response)=>{
+        res.send('Categoria Excluida');
+    });
+
+});
 
 /* FIM DAS ROTAS DE CATEGORIA */
 
