@@ -1,6 +1,7 @@
 /*IMPORTA O PACOTE DO EXPRESS PARA O SCRIPT index.js*/
 const express = require('express');
 const routesCategoria = require('./route/routesCategorias');
+const modelLivro = require('./model/modelLivro');
 
 /*TORNA O EXPRESS EXECUTÁVEL DENTRO DO SCRIPT inxdex.js
 ATRAVÉS DA CONSTANTE app
