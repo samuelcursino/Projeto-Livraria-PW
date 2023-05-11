@@ -1,13 +1,21 @@
 const express = require('express');
 
-const app = express();
+const modelLivro = require('../model/modelLivro');
+const upload = require('../helpers/upload/uploadImagem');
+
 const router = express.Router();
 
-const modelLivro = require('../model/modelLivro');
+            // Rota             // Middleware              //Callback
+router.post('/cadastrarLivro', upload.array('imagem', 2), (req, res)=>{
+                             //Multer
+    // console.log(req.body);
+    console.log(req.files[0]);
+    console.log(req.files[1]);
+    // res.send('teste upload');
 
-router.post('/cadastrarLivro', (req, res)=>{
-
-    const { titulo, preco, detalhes, imagen_peq, imagen_grd, tblCategoriaumId } = req.body;
+    let { titulo, preco, detalhes, tblCategoriaumId } = req.body;
+    let imagen_peq = req.files[0].path;
+    let imagen_grd = req.files[1].path;
 
     modelLivro.create(
         {
@@ -73,7 +81,7 @@ router.delete('/excluirLivro/:id', (req, res)=>{
 
         .then((livro)=>{
 
-            livro.destroy({
+            modelLivro.destroy({
                 where:{id}
             }).then(
                 ()=>{

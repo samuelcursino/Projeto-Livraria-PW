@@ -161,6 +161,7 @@ router.delete('/excluirCategoria/:cod_categoria', (req, res)=>{
                 erroStatus:false,
                 mensagemStatus:"CATEGORIA EXCLUIDA COM SUCESSO."
             })
+           
         }
     ).catch(
         (error)=>{

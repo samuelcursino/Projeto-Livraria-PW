@@ -73,7 +73,7 @@ app.post('/editarCategoria', (req, res)=>{
 
     axios.put(urlEditar, req.body)
     .then((response)=>{
-        res.send('dado alterado');
+        res.redirect('/listagemCategorias')
     });
 
 })
@@ -86,12 +86,20 @@ app.get('/excluirCategoria/:cod_categoria', (req, res)=>{
 
     axios.delete(urlExcluirCategoria)
     .then((response)=>{
-        res.send('Categoria Excluida');
+        res.redirect('/listagemCategorias')
     });
 
 });
 
 /* FIM DAS ROTAS DE CATEGORIA */
+
+// INICIO DAS ROTAS DE LIVRO
+
+app.get('/livro', (req, res)=>{
+    res.render('livro/index');
+});
+
+// FIM DAS ROTAS DE LIVRO
 
 app.listen(3001, ()=>{
     console.log("SERVIDOR FRONTEND RODANDO EM - http://localhost:3001");
