@@ -95,9 +95,37 @@ app.get('/excluirCategoria/:cod_categoria', (req, res)=>{
 
 // INICIO DAS ROTAS DE LIVRO
 
+//Cadastro de Livros
 app.get('/livro', (req, res)=>{
-    res.render('livro/index');
+
+    const urlListarCategorias = 'http://localhost:3000/listarCategoria';
+
+    axios.get(urlListarCategorias)
+    .then((response)=>{
+
+        console.log(response.data);
+        let categorias = response.data;
+        res.render('livro/index', {categorias});
+    });
+
 });
+
+//Listagem de livros
+app.get('/listagemLivro', (req, res)=>{
+
+    const urlListarLivro = 'http://localhost:3000/listarLivro';
+
+    axios.get(urlListarLivro)
+    .then((response)=>{
+
+        console.log(response.data);
+        let livros = response.data;
+        res.render('livro/listagemLivro', {livros});
+    });
+
+})
+
+
 
 // FIM DAS ROTAS DE LIVRO
 

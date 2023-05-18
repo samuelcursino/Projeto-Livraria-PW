@@ -31,6 +31,13 @@
                     name="detalhes" id="detalhes"
                     placeholder="DETALHES">
 
+                    <label for="categorias"></label>
+                    <select class="form-control" name="tblCategoriumCodCategoria" id="">
+                        <% categorias.data.forEach( (categoria)=>{ %>
+                        <option value="<%= categoria.cod_categoria %>"><%= categoria.nome_categoria %></option>
+                        <% }) %>
+                    </select>
+
                     <label for="imagem"></label>
                     <input class="form-control" type="file" 
                     name="imagem" id="imagem">

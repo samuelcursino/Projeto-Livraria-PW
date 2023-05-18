@@ -13,7 +13,7 @@ router.post('/cadastrarLivro', upload.array('imagem', 2), (req, res)=>{
     console.log(req.files[1]);
     // res.send('teste upload');
 
-    let { titulo, preco, detalhes, tblCategoriaumId } = req.body;
+    let { titulo, preco, detalhes, tblCategoriumCodCategoria } = req.body;
     let imagen_peq = req.files[0].path;
     let imagen_grd = req.files[1].path;
 
@@ -26,7 +26,7 @@ router.post('/cadastrarLivro', upload.array('imagem', 2), (req, res)=>{
             detalhes,
             imagen_peq,
             imagen_grd,
-            tblCategoriaumId
+            tblCategoriumCodCategoria
 
         }
     ).then(
