@@ -62,6 +62,7 @@ router.get('/listarLivro', (req, res)=>{
 router.get('/listarLivroCodigo/:id', (req, res)=>{
 
     const { id } = req.params
+    console.log|(req.params)
 
     modelLivro.findByPk(id)
         .then((livro)=>{

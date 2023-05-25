@@ -127,19 +127,22 @@ app.get('/listagemLivro', (req, res)=>{
 
 
 //Editar livro
-app.get('/editarCategoria/:cod_categoria', (req, res)=>{
+app.get('/editarLivro/:cod_livro', (req, res)=>{
     
-    let {cod_categoria} = req.params;
+    let {cod_livro} = req.params;
 
-    urlListarCategoriaPK = `http://localhost:3000/listarCategoriaPK/${cod_categoria}`;
+    urlListarLivroPK = `http://localhost:3000/listarLivroCodigo/${cod_livro}`;
 
-    // console.log("COD_CATEGORIA: " + cod_categoria);
-
-    axios.get(urlListarCategoriaPK)
+    axios.get(urlListarLivroPK)
         .then((response)=>{
-            let categoria = response.data;
-            // console.log(categoria.data);
-            res.render('categoria/editarCategoria.ejs', {categoria});
+            let livro = response.data;
+
+            const urlListarCategoria = 'http://localhost:3000/listarCategoria';
+            axios.get(urlListarCategoria)
+            .then((response)=>{        
+                let categorias = response.data;
+                res.render('livro/editarLivro.ejs', {livro, categorias});   
+            });
 
         });
 
